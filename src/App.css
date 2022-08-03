@@ -1,6 +1,6 @@
 .App {
   font-family: sans-serif;
-  text-align: center;
+  
 }
 
 .profile-pic {
@@ -12,4 +12,48 @@
 
 .App > div:nth-child(3) > .profile-pic {
   border-radius: 0px;
+}
+.like-style{
+  font-size: 30px;
+
+}
+
+.add-color {
+ display: flex;
+}
+
+.movie-specs{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.movie-container{
+width: 340px;
+}
+
+.movie-poster{
+  width: 340px;
+  height: 600px;
+  object-fit: cover;
+}
+
+.movie-name{
+  font-size: 24px;
+  margin: 0;
+}
+
+.movie-summary{
+  margin-top: 0;
+}
+
+.movie-rating{
+  font-size: 18px;
+}
+
+.movie-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
 }
