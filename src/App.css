@@ -62,3 +62,10 @@ width: 340px;
   justify-content: space-around;
   gap: 20px;
 }
+
+.add-movie-form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}

@@ -1,4 +1,7 @@
 import "./App.css";
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+
 import { AddColor } from "./AddColor"; // named
 import { Counter } from "./Counter"  // default
 import {useState} from "react";
@@ -156,13 +159,54 @@ function Home() {
 }
 
 function MovieList(){
-  const movieList = INTIAL_MOVIE_LIST;
+  // const movieList = INTIAL_MOVIE_LIST;
+
+  const [movieList, setMovieList] = useState(INTIAL_MOVIE_LIST)
+
+  const [name, setName] = useState("");
+  const [rating, setRating] = useState("");
+  const [poster, setPoster] = useState("");
+  const [summary, setSummary] = useState("");
+
   return(
-    <div className="movie-list">
-     {movieList.map((mv, index) => (
+    <div>
+      <div className="add-movie-form">
+      <input
+        onChange={(event) => setName(event.target.value)}                
+        placeholder="Enter movie name" />
+        <input
+        onChange={(event) => setRating(event.target.value)}                
+        placeholder="Enter movie rating" />
+        <input
+        onChange={(event) => setPoster(event.target.value)}                
+        placeholder="Enter movie poster" />
+        
+        <TextField  onChange={(event) => setSummary(event.target.value)}  
+        label="Summary" variant="standard" />
+
+       
+       <Button  onClick={() => {
+        const newMovie =  {
+          name: name,
+          poster: poster,
+          rating: rating,
+          summary: summary,           
+        };
+          //copy of movieList and add newMovie to it
+         setMovieList([...movieList, newMovie])
+        }
+      }
+       variant="contained">Add Movie</Button>
+
+      </div>
+
+        <div className="movie-list">
+         {movieList.map((mv, index) => (
         <Movie key={index} movie={mv} id={index}/>
      ))}
      </div>
+    </div>
+    
   )
 }
 
