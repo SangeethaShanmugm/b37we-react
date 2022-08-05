@@ -10,7 +10,7 @@ export function Counter() {
       <button className="like-style" onClick={() => {
         setLike(like + 1);
       }}> 👍 {like} </button>
-      <button className="like-style" onClick={() => {
+      <button className="dislike-style" onClick={() => {
         setDislike(dislike + 1);
       }}> 👎  {dislike} </button>
 

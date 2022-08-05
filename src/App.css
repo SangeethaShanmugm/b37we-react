@@ -13,9 +13,14 @@
 .App > div:nth-child(3) > .profile-pic {
   border-radius: 0px;
 }
-.like-style{
-  font-size: 30px;
+.like-style,
+.dislike-style{
+  font-size: 20px;
 
+}
+
+.like-style{
+  margin-right: 1rem;
 }
 
 .add-color {
