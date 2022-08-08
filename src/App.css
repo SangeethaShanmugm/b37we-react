@@ -69,3 +69,7 @@ width: 340px;
   gap: 10px;
   margin-bottom: 16px;
 }
+
+.movie-detail-container{
+  max-width: 800px;
+}
