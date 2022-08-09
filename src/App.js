@@ -7,6 +7,7 @@ import { UserList } from "./UserList";
 import { Home } from "./Home";
 import { NotFoundPage } from "./NotFoundPage";
 import { MovieList } from "./MovieList";
+import { AddMovie } from "./AddMovie";
  
 
 const INTIAL_MOVIE_LIST = [
@@ -111,7 +112,7 @@ export default function App() {
         <Link to="/color-game">Color-game</Link>   
         </li>
         <li>
-        <Link to="/somewhere">Some Where</Link>   
+        <Link to="/movies/add">Add Movie</Link>   
         </li>
       </ul>
     </nav>
@@ -120,6 +121,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<MovieList movieList={movieList} setMovieList={setMovieList}/>} />
         <Route path="/movies/:movieid" element={<MovieDetails movieList={movieList}/>} />
+        <Route path="/movies/add" element={<AddMovie movieList={movieList} setMovieList={setMovieList} />} />
         <Route path="/color-game" element={<AddColor />} />
         <Route path="/users" element={<UserList />}/>    
         <Route path="/films" element={<Navigate replace to="/movies" />}  />  
@@ -133,28 +135,4 @@ export default function App() {
 }
 
 
-
-//Task - 15 mins + 5mins breaks
-//Add Movie - like AddColor
-// 4 input-  name, poster, rating, summary
-// button - Add Movie  - end of the list
-
-
-                    // MovieList(name)   ->  Movie() -> Counter (data) 
-                    //                    -> Contact (data) 
-  // App
-
-
-                    //  MovieDetails  ->  About 
-
-// React flow in one direction - from parent to child 
-// Not from child to parent 
-// From App - MovieList and MovieDetails component
-
-
-              // App(mountain )( movieList, setMovieList)
-   
-    //  MovieList (valley)     MovieDetails  (valley)        
-
-//  React is a unidirectional - 
 
