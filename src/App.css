@@ -73,3 +73,9 @@ width: 340px;
 .movie-detail-container{
   max-width: 800px;
 }
+
+.not-found{
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}

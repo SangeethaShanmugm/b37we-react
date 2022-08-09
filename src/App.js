@@ -1,18 +1,12 @@
 import "./App.css";
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import IconButton from '@mui/material/IconButton';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import InfoIcon from '@mui/icons-material/Info';
 import { AddColor } from "./AddColor"; // named
-import { Counter } from "./Counter"  // default
 import {useState} from "react";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Navigate,  Routes, Route, Link } from "react-router-dom";
 import { MovieDetails } from "./MovieDetails";
 import { UserList } from "./UserList";
 import { Home } from "./Home";
-import { DataArrayTwoTone } from "@mui/icons-material";
+import { NotFoundPage } from "./NotFoundPage";
+import { MovieList } from "./MovieList";
  
 
 const INTIAL_MOVIE_LIST = [
@@ -99,7 +93,7 @@ const INTIAL_MOVIE_LIST = [
 
 export default function App() {
   //Lifting the state up
-  const [movieList, setMovieList] = useState(INTIAL_MOVIE_LIST)
+  const [movieList, setMovieList] = useState(INTIAL_MOVIE_LIST);
 
   return (
     <div className="App">
@@ -127,135 +121,15 @@ export default function App() {
         <Route path="/movies" element={<MovieList movieList={movieList} setMovieList={setMovieList}/>} />
         <Route path="/movies/:movieid" element={<MovieDetails movieList={movieList}/>} />
         <Route path="/color-game" element={<AddColor />} />
-        <Route path="/users" element={<UserList />}/>      
-        <Route path="*" element={<NotFoundPage />}/>      
+        <Route path="/users" element={<UserList />}/>    
+        <Route path="/films" element={<Navigate replace to="/movies" />}  />  
+        <Route path="/404" element={<NotFoundPage />}/>    
+        <Route path="*" element={<Navigate replace to="/404" /> } />      
       </Routes> 
  
       </div>
   );
   //JSX ends
-}
-
-function NotFoundPage(){
-  return (
-    <div>
-      <h1>404 Not Found</h1>
-    </div>
-  )
-}
-
-function MovieList( { movieList, setMovieList}){
-  // const movieList = INTIAL_MOVIE_LIST;
-
-
-
-  const [name, setName] = useState("");
-  const [rating, setRating] = useState("");
-  const [poster, setPoster] = useState("");
-  const [summary, setSummary] = useState("");
-  const [trailer, setTrailer] = useState("")
-
-  return(
-    <div>
-      <div className="add-movie-form">
-      <TextField  onChange={(event) => setName(event.target.value)}  
-        label="Name" variant="standard" />
-        
-      <TextField  onChange={(event) => setRating(event.target.value)}  
-        label="Rating" variant="standard" />
-        
-        <TextField  onChange={(event) => setPoster(event.target.value)}  
-        label="Poster" variant="standard" />     
-             
-        <TextField  onChange={(event) => setSummary(event.target.value)}  
-        label="Summary" variant="standard" />
-
-        <TextField  onChange={(event) => setTrailer(event.target.value)}  
-        label="Trailer" variant="standard" />
-
-       {/* newMovie = object */}
-       <Button  onClick={() => {
-        const newMovie =  {
-          name: name,
-          poster: poster,
-          rating: rating,
-          summary: summary,  
-          trailer: trailer,         
-        };
-          //copy of movieList and add newMovie to it
-         setMovieList([...movieList, newMovie])
-        }
-      }
-       variant="contained">Add Movie</Button>
-
-      </div>
-
-        <div className="movie-list">
-         {movieList.map((mv, index) => (
-        <Movie key={index} movie={mv} id={index}/>
-     ))}
-     </div>
-    </div>
-    
-  )
-}
-
-function Movie({ movie, id}){
-  // const movie = {
-  //   name: "RRR",
-  //   rating: 8.8,
-  //   summary: "RRR is an upcoming Indian Telugu-language period action drama film directed by S. S. Rajamouli, and produced by D. V. V. Danayya of DVV Entertainments.",
-  //   poster: "https://englishtribuneimages.blob.core.windows.net/gallary-content/2021/6/Desk/2021_6$largeimg_977224513.JPG"
-  // };
-
-//conditional styling
-
-
-const styles ={
-  color: movie.rating >= 8 ? "green" : "red"
-}
-
-const [show, setShow] = useState(true);
-
-//True =block
-//False - none
-//!show = false - !true = false
-
-const summaryStyles = {
-  display: show ? "block" : "none",
-}
-
-const navigate = useNavigate();
-
-  return(
-    <div className="movie-container">
-      <img className="movie-poster" src={movie.poster}/>
-      <div className="movie-specs">
-      <h2 className="movie-name">{movie.name} - {id}
-      <IconButton onClick={() => setShow(!show) }
-      aria-label="Toggle description"
-      color="primary">
-        {show ?  <ExpandLessIcon /> : <ExpandMoreIcon/> }
-       </IconButton>
-       <IconButton
-       onClick={() => navigate("/movies/" + id)}
-       color="primary"
-       >
-       <InfoIcon />
-       </IconButton>
-      
-      </h2> 
-      <p style ={styles} className="movie-rating">⭐{movie.rating}</p>
-      </div>
-      {/* /movies/0 */}    
-      
-         
-      {/* <p style={summaryStyles} className="movie-summary">{movie.summary}</p> */}
-      {/* //conditional rendering */}
-      {show ? <p className="movie-summary">{movie.summary}</p> : null }
-      <Counter />
-    </div>
-  )
 }
 
 
@@ -266,9 +140,9 @@ const navigate = useNavigate();
 // button - Add Movie  - end of the list
 
 
-                    // MovieList(data)   ->  Movie(data) -> Counter (data) 
-                    //              -> Contact (data) 
-                    // App
+                    // MovieList(name)   ->  Movie() -> Counter (data) 
+                    //                    -> Contact (data) 
+  // App
 
 
                     //  MovieDetails  ->  About 
@@ -284,4 +158,3 @@ const navigate = useNavigate();
 
 //  React is a unidirectional - 
 
-<iframe width="789" height="328" src="https://www.youtube.com/embed/bwzLiQZDw2I" title="Frozen 2 | Official Trailer 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
