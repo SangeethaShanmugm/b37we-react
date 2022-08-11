@@ -1,14 +1,20 @@
 import "./App.css";
 import { AddColor } from "./AddColor"; // named
 import {useState} from "react";
-import { Navigate,  Routes, Route, Link } from "react-router-dom";
+import { Navigate,  Routes, Route, Link, useNavigate } from "react-router-dom";
 import { MovieDetails } from "./MovieDetails";
 import { UserList } from "./UserList";
 import { Home } from "./Home";
 import { NotFoundPage } from "./NotFoundPage";
 import { MovieList } from "./MovieList";
 import { AddMovie } from "./AddMovie";
- 
+import { Example } from "./Example" 
+import { Example2 } from "./Example2" 
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
+
 
 const INTIAL_MOVIE_LIST = [
   {
@@ -92,47 +98,90 @@ const INTIAL_MOVIE_LIST = [
 ];
 
 
+
+//1. Creating - createContext
+//2. Publisher - provider - context.Provider
+//3. Subscriber - useContext - useContext(context)
+
+const theme = createTheme({
+  palette: {
+    mode: 'light',
+  },
+});
+
+
 export default function App() {
+  //JS starts
   //Lifting the state up
   const [movieList, setMovieList] = useState(INTIAL_MOVIE_LIST);
+  const navigate = useNavigate();
 
+  //JS ends
+  //JSX starts
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>
+      <div className="App">
 
-    <nav>
-      <ul>
-        <li>
-          {/* Link change page without refresh */}
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-        <Link to="/movies">Movies</Link>        
-        </li>
-        <li>
-        <Link to="/color-game">Color-game</Link>   
-        </li>
-        <li>
-        <Link to="/movies/add">Add Movie</Link>   
-        </li>
-      </ul>
-    </nav>
-     {/* Router - to map the  URl with component*/}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<MovieList movieList={movieList} setMovieList={setMovieList}/>} />
-        <Route path="/movies/:movieid" element={<MovieDetails movieList={movieList}/>} />
-        <Route path="/movies/add" element={<AddMovie movieList={movieList} setMovieList={setMovieList} />} />
-        <Route path="/color-game" element={<AddColor />} />
-        <Route path="/users" element={<UserList />}/>    
-        <Route path="/films" element={<Navigate replace to="/movies" />}  />  
-        <Route path="/404" element={<NotFoundPage />}/>    
-        <Route path="*" element={<Navigate replace to="/404" /> } />      
-      </Routes> 
- 
-      </div>
+{/* <nav>
+  <ul>
+    <li>
+      {/* Link change page without refresh */}
+      {/* <Link to="/">Home</Link>
+    </li>
+    <li>
+    <Link to="/movies">Movies</Link>        
+    </li>
+    <li>
+    <Link to="/color-game">Color-game</Link>   
+    </li>
+    <li>
+    <Link to="/movies/add">Add Movie</Link>   
+    </li>
+    </ul>
+            </nav>  */} 
+ {/* Router - to map the  URl with component*/}
+
+ <AppBar position="static">
+ <Toolbar >
+  <Button color="inherit" 
+  onClick={() => navigate("/")}>Home</Button>
+  <Button color="inherit" 
+  onClick={() => navigate("/movies")}>Movies</Button>
+  <Button color="inherit" 
+  onClick={() => navigate("/color-game")}>Color Games</Button>
+  <Button color="inherit" 
+  onClick={() => navigate("/movies/add")}>Add Movies</Button>
+   <Button color="inherit" 
+  onClick={() => navigate("/")}>Light Mode</Button>
+  </Toolbar>
+ </AppBar>
+
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/movies" element={<MovieList movieList={movieList} setMovieList={setMovieList}/>} />
+    <Route path="/movies/:movieid" element={<MovieDetails movieList={movieList}/>} />
+    <Route path="/movies/add" element={<AddMovie movieList={movieList} setMovieList={setMovieList} />} />
+   <Route path="/color-game" element={<AddColor />} />
+     {/* <Route path="/users" element={<UserList />}/>    
+    <Route path="/films" element={<Navigate replace to="/movies" />}  />  
+    <Route path="/404" element={<NotFoundPage />}/>    
+    <Route path="*" element={<Navigate replace to="/404" /> } />       */}
+          </Routes>  
+
+  </div>
+     </ThemeProvider>
+
+    
   );
   //JSX ends
 }
 
 
 
+
+//1. Creating - createContext
+//2. Publisher - provider - context.Provider
+//3. Subscriber - useContext - useContext(context)
+
+//App - publisher
+//context - provider - it provides data to the component

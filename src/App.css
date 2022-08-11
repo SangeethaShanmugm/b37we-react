@@ -79,3 +79,11 @@ width: 340px;
   height: 400px;
   object-fit: cover;
 }
+
+.button-style{
+  font-size: 50px;
+}
+
+.icon-btn{
+  font-size: 50px;
+}
