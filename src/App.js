@@ -1,6 +1,6 @@
 import "./App.css";
 import { AddColor } from "./AddColor"; // named
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import { Navigate,  Routes, Route, Link, useNavigate } from "react-router-dom";
 import { MovieDetails } from "./MovieDetails";
 import { UserList } from "./UserList";
@@ -14,6 +14,10 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import CssBaseline from '@mui/material/CssBaseline';
+import Paper from '@mui/material/Paper';
 
 
 const INTIAL_MOVIE_LIST = [
@@ -103,23 +107,33 @@ const INTIAL_MOVIE_LIST = [
 //2. Publisher - provider - context.Provider
 //3. Subscriber - useContext - useContext(context)
 
-const theme = createTheme({
-  palette: {
-    mode: 'light',
-  },
-});
+
 
 
 export default function App() {
-  //JS starts
-  //Lifting the state up
-  const [movieList, setMovieList] = useState(INTIAL_MOVIE_LIST);
-  const navigate = useNavigate();
 
-  //JS ends
-  //JSX starts
+  const [movieList, setMovieList] = useState(INTIAL_MOVIE_LIST );
+  const navigate = useNavigate();
+  const [mode, setMode] = useState("light");
+
+ 
+  const theme = createTheme({
+    palette: {
+      mode: mode,
+    },
+  });
+  
+  useEffect(() => {
+    fetch("https://62f5efac612c13062b42f254.mockapi.io/movie")
+    .then(data => data.json())
+    .then((mvs) => console.log(mvs));
+   }, []);
+
+   
   return (
     <ThemeProvider theme={theme}>
+      <Paper style={{borderRadius: 0, minHeight: "100vh"}}elevation={24} >
+      {/* <CssBaseline />  */}
       <div className="App">
 
 {/* <nav>
@@ -151,8 +165,10 @@ export default function App() {
   onClick={() => navigate("/color-game")}>Color Games</Button>
   <Button color="inherit" 
   onClick={() => navigate("/movies/add")}>Add Movies</Button>
-   <Button color="inherit" 
-  onClick={() => navigate("/")}>Light Mode</Button>
+   <Button 
+   startIcon = {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon /> }
+   color="inherit" 
+   onClick={() => setMode( mode == "light" ? "dark" : "light")}> {mode == "light" ? "dark" : "light"} Mode</Button>
   </Toolbar>
  </AppBar>
 
@@ -169,6 +185,7 @@ export default function App() {
           </Routes>  
 
   </div>
+  </Paper>
      </ThemeProvider>
 
     
