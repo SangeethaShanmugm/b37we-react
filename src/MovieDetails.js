@@ -16,6 +16,13 @@ if(!movie){
   return <NotFoundPage />
 }
 
+// useEffect(() => {
+//   fetch("https://62f5efac612c13062b42f254.mockapi.io/movies",{
+//     method: "GET",
+//   })
+//   .then((data) => data.json())
+//   .then((mvs) =>setMovieList(mvs));
+//  },[]);
 
   return (
     <div>

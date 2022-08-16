@@ -42,7 +42,7 @@ export function Movie({ movie, id }) {
             {show ? <ExpandLessIcon /> : <ExpandMoreIcon />}
           </IconButton>
           <IconButton
-            onClick={() => navigate("/movies/" + id)}
+            onClick={() => navigate(`/movies/${id}`)}
             color="primary"
           >
             <InfoIcon />

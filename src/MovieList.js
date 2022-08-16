@@ -2,16 +2,20 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useState, useEffect } from "react";
 import { Movie } from "./Movie";
+import { API } from "./global";
 
-export function MovieList({movieList, setMovieList}) {
+export function MovieList() {
   // const movieList = INTIAL_MOVIE_LIST;
-  // const [movieList, setMovieList] = useState([]);
+  const [movieList, setMovieList] = useState([]);
   
-  // useEffect(() => {
-  //   fetch("https://62f5efac612c13062b42f254.mockapi.io/movie")
-  //   .then((data) => data.json())
-  //   .then((mvs) => console.log(mvs));
-  //  },[]);
+  useEffect(() => {
+    fetch(`${API}/movie`,{
+      method: "GET",
+    })
+    .then((data) => data.json())
+    .then((mvs) =>setMovieList(mvs));
+   },[]);
+
 
   return (
     <div>
