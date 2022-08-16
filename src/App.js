@@ -111,8 +111,8 @@ const INTIAL_MOVIE_LIST = [
 
 
 export default function App() {
+  const [movieList, setMovieList] = useState(INTIAL_MOVIE_LIST);
 
-  const [movieList, setMovieList] = useState(INTIAL_MOVIE_LIST );
   const navigate = useNavigate();
   const [mode, setMode] = useState("light");
 
@@ -125,12 +125,12 @@ export default function App() {
   
   useEffect(() => {
     fetch("https://62f5efac612c13062b42f254.mockapi.io/movie")
-    .then(data => data.json())
+    .then((data) => data.json())
     .then((mvs) => console.log(mvs));
-   }, []);
+   },[]);
 
-   
-  return (
+    
+   return (
     <ThemeProvider theme={theme}>
       <Paper style={{borderRadius: 0, minHeight: "100vh"}}elevation={24} >
       {/* <CssBaseline />  */}

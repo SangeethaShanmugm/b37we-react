@@ -8,9 +8,9 @@ export function Counter() {
   const [like, setLike] = useState(0);
   const [dislike, setDislike] = useState(0);
 
-useEffect(() => {
-  console.log("Total clicks: 👍", like + dislike);
-},[like, dislike])
+// useEffect(() => {
+//   console.log("Total clicks: 👍", like + dislike);
+// },[like, dislike])
 
   return (
     <div>
