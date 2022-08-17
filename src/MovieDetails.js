@@ -54,3 +54,5 @@ if(!movie){
 //Task 
 // path -  /movies/add -> <AddMovie />
 //Add Movie -> Movie added -> direct - /movies(Movie List page)
+
+//Edit Movie -> /movies/edit/:id -> PUT method //MovieDetails + AddMovies comp

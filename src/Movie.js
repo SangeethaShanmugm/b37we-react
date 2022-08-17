@@ -9,7 +9,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { API } from "./global";
 
 
-export function Movie({ movie, id, deleteButton }) {
+export function Movie({ movie, id, deleteButton, editButton }) {
   // const movie = {
   //   name: "RRR",
   //   rating: 8.8,
@@ -58,7 +58,7 @@ export function Movie({ movie, id, deleteButton }) {
       {/* <p style={summaryStyles} className="movie-summary">{movie.summary}</p> */}
       {/* //conditional rendering */}
       {show ? <p className="movie-summary">{movie.summary}</p> : null}
-      <Counter /> {deleteButton}
+      <Counter /> {deleteButton} {editButton}
 
 
       {/* <IconButton onClick={()=> {       

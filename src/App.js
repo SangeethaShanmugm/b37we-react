@@ -18,6 +18,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import CssBaseline from '@mui/material/CssBaseline';
 import Paper from '@mui/material/Paper';
+import { EditMovie } from "./EditMovie";
 
 
 // const INTIAL_MOVIE_LIST = [
@@ -170,7 +171,8 @@ export default function App() {
     <Route path="/" element={<Home />} />
     <Route path="/movies" element={<MovieList />} />
     <Route path="/movies/:id" element={<MovieDetails />} />
-    <Route path="/movies/add" element={<AddMovie movieList={movieList} setMovieList={setMovieList} />} />
+    <Route path="/movies/add" element={<AddMovie  />} />
+    <Route path="/movies/edit/:id" element={<EditMovie  />} />
    <Route path="/color-game" element={<AddColor />} />
      {/* <Route path="/users" element={<UserList />}/>    
     <Route path="/films" element={<Navigate replace to="/movies" />}  />  
@@ -189,10 +191,3 @@ export default function App() {
 
 
 
-
-//1. Creating - createContext
-//2. Publisher - provider - context.Provider
-//3. Subscriber - useContext - useContext(context)
-
-//App - publisher
-//context - provider - it provides data to the component
