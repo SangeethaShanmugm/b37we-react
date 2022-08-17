@@ -4,25 +4,30 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate } from "react-router-dom";
 import { NotFoundPage } from "./NotFoundPage";
+import { useState, useEffect } from "react";
+import { API } from "./global";
 
-export function MovieDetails( { movieList }) {
-  const { movieid } = useParams();
-  const movie = movieList[movieid];
+export function MovieDetails( ) {
+  const { id } = useParams();
+  // const movie = movieList[movieid];
   // console.log(movieList, movie)
-  const navigate = useNavigate();
+ 
+  const [movie, setMovie] = useState({})
+
+  
+  useEffect(() => {
+    fetch(`${API}/movie/${id}`, {method: "GET",})
+    .then((data) => data.json())
+    .then((mv) => setMovie(mv));
+  },     []);
+
+
+ const navigate = useNavigate();
 
 if(!movie){
   // navigate("/404");
   return <NotFoundPage />
 }
-
-// useEffect(() => {
-//   fetch("https://62f5efac612c13062b42f254.mockapi.io/movies",{
-//     method: "GET",
-//   })
-//   .then((data) => data.json())
-//   .then((mvs) =>setMovieList(mvs));
-//  },[]);
 
   return (
     <div>

@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export function AddMovie( { movieList, setMovieList}) {
+export function AddMovie( ) {
 
   const [name, setName] = useState("");
   const [rating, setRating] = useState("");
@@ -40,7 +40,8 @@ export function AddMovie( { movieList, setMovieList}) {
             trailer: trailer,
           };
           //copy of movieList and add newMovie to it
-          setMovieList([...movieList, newMovie]);
+          // setMovieList([...movieList, newMovie]);
+          
           navigate("/movies");
         }} 
           variant="contained" >Add Movie</Button>

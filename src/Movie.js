@@ -2,13 +2,16 @@ import IconButton from '@mui/material/IconButton';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import InfoIcon from '@mui/icons-material/Info';
-import { Counter } from "./Counter" // default
-  ;
+import { Counter } from "./Counter" // default;
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import DeleteIcon from '@mui/icons-material/Delete';
+import Delete from '@mui/icons-material/Delete';
+import { API } from "./global";
 
 
-export function Movie({ movie, id }) {
+
+export function Movie({ movie, id}) {
   // const movie = {
   //   name: "RRR",
   //   rating: 8.8,
@@ -30,6 +33,14 @@ export function Movie({ movie, id }) {
   };
 
   const navigate = useNavigate();
+
+  
+  const getMovies = () => {
+    fetch(`${API}/movie`,{
+      method: "GET",
+    })
+   
+   }
 
   return (
     <div className="movie-container">
@@ -58,6 +69,13 @@ export function Movie({ movie, id }) {
       {/* //conditional rendering */}
       {show ? <p className="movie-summary">{movie.summary}</p> : null}
       <Counter />
-    </div>
+     <IconButton onClick={() => {
+      
+        fetch(`${API}/movie/${id}`,{
+          method: "DELETE",
+        }).then(() => getMovies());               
+     }}
+     > <DeleteIcon/></IconButton>
+         </div>
   );
 }

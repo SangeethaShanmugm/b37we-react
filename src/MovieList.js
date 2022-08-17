@@ -8,22 +8,25 @@ export function MovieList() {
   // const movieList = INTIAL_MOVIE_LIST;
   const [movieList, setMovieList] = useState([]);
   
-  useEffect(() => {
+
+  const getMovies = () => {
     fetch(`${API}/movie`,{
       method: "GET",
     })
     .then((data) => data.json())
     .then((mvs) =>setMovieList(mvs));
-   },[]);
+   }
+
+
+  useEffect(() => getMovies(),[]);
 
 
   return (
     <div>
       
-
       <div className="movie-list">
         {movieList.map((mv, index) => (
-          <Movie key={index} movie={mv} id={index} />
+          <Movie key={mv.id} movie={mv} id={mv.id}  />
         ))}
       </div>
     </div>
