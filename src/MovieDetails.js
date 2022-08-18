@@ -9,6 +9,7 @@ import { API } from "./global";
 
 export function MovieDetails( ) {
   const { id } = useParams();
+  console.log(id);
   // const movie = movieList[movieid];
   // console.log(movieList, movie)
  

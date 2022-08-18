@@ -71,6 +71,6 @@ export function AddMovie() {
 
 //Add Movie
 // 1. method - POST
-//2.body - data - JSON
-
+// 2. body - data - JSON
+// 3. Headers
 
