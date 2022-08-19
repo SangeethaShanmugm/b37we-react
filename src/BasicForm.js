@@ -15,7 +15,7 @@ const formValidationSchema = yup.object({
 
 export function BasicForm() {
   const formik = useFormik({
-    initialValues: { email: "Cool", password: "abc" },
+    initialValues: { email: "", password: "" },
     validationSchema: formValidationSchema,
     onSubmit: (values) => {
       console.log("onSubmit", values);
@@ -28,20 +28,23 @@ export function BasicForm() {
       name="email"
       value={formik.values.email} 
       onChange={formik.handleChange} 
+      onBlur={formik.handleBlur}
       type="email" 
       placeholder="Email" />
       <br />
-      {formik.errors.email}
+      {formik.touched.email && formik.errors.email? formik.errors.email : ''}
       <br />
       <input 
       id="password"
       name="password"
       value={formik.values.password} 
       onChange={formik.handleChange} 
+      onBlur={formik.handleBlur}
       type="password" 
       placeholder="Password" />
       <br />
-      {formik.errors.password}
+      {formik.touched.password && formik.errors.password? formik.errors.password : '' }
+     
       <br />
       <button type="submit">Submit</button>
     </form>
