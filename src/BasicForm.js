@@ -5,12 +5,14 @@ const formValidationSchema = yup.object({
   email: yup
   .string()
   .min(5, "Need a longer email 😃")
-  .required("Why not fill the email"),
+  .required("Why not fill the email")
+  .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, "Enter Valid email"),
   password: yup
   .string()
   .min(8, "Need a longer Password 😃")
   .max(12, "Too much Password")
-  .required("Why not fill the password"),
+  .required("Why not fill the password")
+  
 })
 
 export function BasicForm() {
