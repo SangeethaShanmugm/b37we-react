@@ -42,7 +42,7 @@ export function AddMovie() {
           };
           //copy of movieList and add newMovie to it
           // setMovieList([...movieList, newMovie]);
-          fetch(`${API}/movie`,{
+          fetch(`${API}/movies`,{
             method: "POST",
             body: JSON.stringify(newMovie),
             headers: {

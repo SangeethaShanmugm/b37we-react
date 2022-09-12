@@ -14,7 +14,7 @@ export function MovieList() {
   const [movieList, setMovieList] = useState([]);
   
  const getMovies =() => {
-  fetch(`${API}/movie`,{
+  fetch(`${API}/movies`,{
     method: "GET",
   })
   .then((data) => data.json())
@@ -34,7 +34,7 @@ export function MovieList() {
           deleteButton={
             <IconButton
             onClick={()=>{
-              fetch(`${API}/movie/${mv.id}`, {
+              fetch(`${API}/movies/${mv.id}`, {
                 method: "DELETE",}) 
                 .then(() =>getMovies());   
              }}color="error" >
@@ -45,7 +45,7 @@ export function MovieList() {
             <IconButton
             onClick={()=> navigate(`/movies/edit/${mv.id}`)}
 
-              // fetch(`${API}/movie/${mv.id}`, {
+              // fetch(`${API}/movies/${mv.id}`, {
               //   method: "DELETE",}) 
               //   .then(() =>getMovies());   
             color="secondary">

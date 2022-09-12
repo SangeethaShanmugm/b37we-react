@@ -15,7 +15,7 @@ export function EditMovie() {
 
   
   useEffect(() => {
-    fetch(`${API}/movie/${id}`, {method: "GET",})
+    fetch(`${API}/movies/${id}`, {method: "GET",})
     .then((data) => data.json())
     .then((mv) => setMovie(mv));
   },     []);
@@ -64,7 +64,7 @@ function EditMovieForm({movie}){
       };
       //copy of movieList and add newMovie to it
       // setMovieList([...movieList, newMovie]);
-      fetch(`${API}/movie/${movie.id}`,{
+      fetch(`${API}/movies/${movie.id}`,{
         method: "PUT",
         body: JSON.stringify(updatedMovie),
         headers: {

@@ -62,7 +62,7 @@ export function Movie({ movie, id, deleteButton, editButton }) {
 
 
       {/* <IconButton onClick={()=> {       
-          fetch(`${API}/movie/${id}`, {
+          fetch(`${API}/movies/${id}`, {
             method: "DELETE",}) 
             .then(() =>getMovies());           
       }}>
