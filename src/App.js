@@ -20,6 +20,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Paper from '@mui/material/Paper';
 import { EditMovie } from "./EditMovie";
 import { BasicForm } from "./BasicForm";
+import { TicTacToe } from "./TicTacToe";
+
 
 
 // const INTIAL_MOVIE_LIST = [
@@ -161,6 +163,8 @@ export default function App() {
   onClick={() => navigate("/color-game")}>Color Games</Button>
   <Button color="inherit" 
   onClick={() => navigate("/movies/add")}>Add Movies</Button>
+  <Button color="inherit" 
+  onClick={() => navigate("/tic-tac-toe")}>Tic-Tac-Toe</Button>
    <Button 
    startIcon = {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon /> }
    color="inherit" 
@@ -176,6 +180,7 @@ export default function App() {
     <Route path="/movies/edit/:id" element={<EditMovie  />} />
     <Route path="/basic-form" element={<BasicForm  />} />
    <Route path="/color-game" element={<AddColor />} />
+   <Route path="/tic-tac-toe" element={<TicTacToe />} />
      {/* <Route path="/users" element={<UserList />}/>    
     <Route path="/films" element={<Navigate replace to="/movies" />}  />  
     <Route path="/404" element={<NotFoundPage />}/>    
