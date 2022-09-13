@@ -87,3 +87,45 @@ width: 340px;
 .icon-btn{
   font-size: 50px;
 }
+
+
+.game-box {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  height: 8rem;
+  width: 8rem;
+  font-size: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: min-content;
+}
+
+.full-game {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(
+    to right top,
+    #051937,
+    #004d7a,
+    #008793,
+    #00bf72,
+    #a8eb12
+  );
+}
+
+.game-title {
+  font-size: 35px;
+  color: black;
+}
+
